@@ -1,0 +1,68 @@
+{
+  "schema": "kitforge.build_recipe.v1",
+  "slug": "wikijs",
+  "image": "readystack/wikijs:3.4.0-CE-ubuntu24.04-r2",
+  "build_method": "source-rebuild-node",
+  "source": {
+    "repo": "https://github.com/requarks/wiki",
+    "ref": "3.4.0",
+    "commit": "c711a5a2d5652961658c9f4f81b90665dfeaf929",
+    "source_date_epoch": 1795543338,
+    "_source_date_epoch_note": "committer date of a53dea81734a29428729b7043f4aaabf57e41de1, the commit tag 3.0.0-beta.685 points to (2026-10-20T05:13:53Z), read through GitHub's API on 2026-11-02. Kept as a note so the build fingerprint of chain 731 (built, at package_archive) does not move; the next retarget writes source_date_epoch_provenance.",
+    "node_version": "26",
+    "node_dist": {
+      "version": "26.13.1",
+      "sha256": "518674de2b621728a5e4486f5fb3b7d2900bb3cc4aa97969edaa463db99f9778"
+    },
+    "package_manager": "npm",
+    "node_project_dir": "backend",
+    "pre_install_cmds": [
+      "node -e \"const fs=require('fs');for(const f of ['backend/package.json','frontend/package.json']){const p=JSON.parse(fs.readFileSync(f,'utf8'));p.version='@VERSION_BARE@';fs.writeFileSync(f,JSON.stringify(p,null,2)+'\\n')}\"",
+      "cd frontend && npm ci --no-audit --no-fund && npm install --no-save --no-audit --no-fund --ignore-scripts @rolldown/binding-wasm32-wasi@$(node -p \"require('./node_modules/rolldown/package.json').version\") && NAPI_RS_FORCE_WASI=true npm run build && test -s ../assets/index.html",
+      "cd blocks && npm ci --no-audit --no-fund && npm run build && test -d compiled",
+      "rm -rf frontend/node_modules blocks/node_modules"
+    ],
+    "install_cmd": "npm install --omit=dev --no-audit --no-fund",
+    "build_cmds": [
+      "cd backend && node --input-type=module -e \"for (const m of ['fastify','pg','drizzle-orm/node-postgres','sharp','simple-git','yjs','@node-saml/node-saml','openid-client','nodemailer','ldapts','ssh2-sftp-client','sanitize-html','cheerio','@aws-sdk/client-s3','@azure/storage-blob','@google-cloud/storage']) await import(m); console.log('wikijs backend dependencies load')\"",
+      "cd backend && node -e \"const path=require('path');const v=require(require.resolve('@azure/msal-node/package.json',{paths:[path.dirname(require.resolve('@azure/identity/package.json'))]})).version;const [a,b]=v.split('.').map(Number);if(a<7||(a===7&&b<1))throw new Error('@azure/identity resolves @azure/msal-node '+v+', inside CVE-2026-109461 (fixed in 7.1.0)');new (require('@azure/identity').DefaultAzureCredential)();console.log('@azure/identity resolves @azure/msal-node '+v+', DefaultAzureCredential constructs')\""
+    ],
+    "app_copies": [
+      {
+        "src": "vendored/wikijs-src/assets",
+        "dst": "/wiki/assets"
+      },
+      {
+        "src": "vendored/wikijs-src/blocks/compiled",
+        "dst": "/wiki/blocks/compiled"
+      },
+      {
+        "src": "vendored/wikijs-src/backend",
+        "dst": "/wiki/backend"
+      },
+      {
+        "src": "vendored/wikijs-src/dev/build/config.yml",
+        "dst": "/wiki/config.yml"
+      },
+      {
+        "src": "vendored/wikijs-src/LICENSE",
+        "dst": "/wiki/LICENSE"
+      }
+    ],
+    "_source_note": "BUILD (generated L-009 Node kit on ubuntu:24.04 with the nodejs.org Node 26 build, upstream's own steps from .github/workflows/build.yml and dev/build/Dockerfile): clone the tag; pre_install_cmds set the version in backend/ and frontend/package.json as upstream's 'Set Version' step does (the disclosed source modification), build the web client (frontend: npm ci + vite build -> assets/) and the content blocks (blocks: npm ci + rollup -> blocks/compiled/), then delete those two build-only node_modules trees. node_project_dir=backend: the dep_bumps go into backend/package.json overrides and the server's production tree is installed there with npm install --omit=dev from upstream's lockfile. build_cmds import the server's main dependencies at vendor time (sharp's native binary included) to fail fast on a broken override; build_cmds[1] checks that @azure/identity resolves @azure/msal-node 7.1.0 or later (CVE-2026-109461) and constructs DefaultAzureCredential, the credential Wiki.js's Azure storage target uses. The offline stage COPYs assets/, blocks/compiled/, backend/ (with node_modules), upstream's dev/build/config.yml (env-substituted DB settings) and LICENSE, exactly the files upstream's image ships. Not built: upstream's image also installs Puppeteer + chrome-headless-shell (optional server-side page re-rendering); this image does not.",
+    "source_date_epoch_provenance": "the time release 3.4.0-CE-ubuntu24.04-r2 was cut (2026-11-24T18:02:18Z), by scripts/rerelease-agenda.py: ReadyStack dates an image by when its release was packaged (owner 2026-11-10), recorded here once and used by every rebuild of the release; it builds upstream commit c711a5a2d565, dated 2026-11-15T08:33:35Z (source.commit_epoch).",
+    "source_date_epoch_basis": "release-cut",
+    "commit_epoch": 1794731615
+  },
+  "binaries_from_source": null,
+  "runtime_packages": [
+    "ca-certificates",
+    "tzdata",
+    "curl",
+    "libatomic1",
+    "git",
+    "openssh-client",
+    "pandoc",
+    "tini"
+  ]
+}

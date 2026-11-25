@@ -1,0 +1,8 @@
+ca-certificates
+tzdata
+curl
+libatomic1
+git
+openssh-client
+pandoc
+tini

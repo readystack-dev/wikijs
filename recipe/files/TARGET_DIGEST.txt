@@ -1,0 +1,8 @@
+image_manifest_digest=sha256:7f333973f5a76d7707116c401b13200d4ea18fd5168995c3c312dfa068bfd2e3
+config_digest=sha256:f68c1aab2b92b9a9f3202962b920ae55d493512c1b39e4804d94ef3d4d0ccfd6
+tag=readystack/wikijs:3.4.0-CE-ubuntu24.04-r2
+probe_port=3000
+probe_path=/_api/system/flags
+probe_timeout=180
+verify_boot=skip
+verify_boot_reason=this image needs db (not part of this archive); boot it with your own services as the admin handbook describes

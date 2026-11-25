@@ -1,0 +1,9 @@
+{
+  "schema": "kitforge.source_tree_hash.v1",
+  "slug": "wikijs",
+  "repo": "https://github.com/requarks/wiki",
+  "ref": "3.4.0",
+  "commit": "c711a5a2d5652961658c9f4f81b90665dfeaf929",
+  "tree_listing_sha256": "8b9d404d465797dc2a38a1d8bd5305613a5adc2844a0f70cc952f8c4cc96ba29",
+  "file_count": 1510
+}

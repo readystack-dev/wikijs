@@ -1,0 +1,31 @@
+{
+  "bases": [
+    {
+      "digest": "sha256:9a04f13b3f80ef056361e30868593b1cfd2279fe19e4081cb93a90bf56819d6a",
+      "layout": "bases/ubuntu_24.04_9c7f200c07e3.oci",
+      "ref": "ubuntu:24.04@sha256:9c7f200c07e3d4a03e7249d2c16bf66a51120fb876aa2242cf31451412543289"
+    }
+  ],
+  "engine": {
+    "archive": "toolchain/buildkit.tar",
+    "image_digest": "sha256:e0e67ea9c4bb07bdef683e29f70f3b623d1eb9c82274a9ec04e6bb0511449fb0",
+    "kind": "buildkit",
+    "tag": "moby/buildkit:v0.31.2"
+  },
+  "inputs": {
+    "context": ".",
+    "dockerfile": "Dockerfile.offline.pinned",
+    "mtime_policy": "clamp",
+    "source_date_epoch": 1795543338,
+    "tree_hash": "sha256:13ac6465c29d87b2a7c2eeb536fd91445e06eb6f1a7525062262e0d99b624bd8"
+  },
+  "probe": {
+    "skip": "this image needs db (not part of this archive); boot it with your own services as the admin handbook describes"
+  },
+  "schema": "readystack-rebuild-bundle/v0.1",
+  "subject": {
+    "config_digest": "sha256:f68c1aab2b92b9a9f3202962b920ae55d493512c1b39e4804d94ef3d4d0ccfd6",
+    "image_manifest_digest": "sha256:7f333973f5a76d7707116c401b13200d4ea18fd5168995c3c312dfa068bfd2e3",
+    "name": "docker.io/readystack/wikijs:3.4.0-CE-ubuntu24.04-r2"
+  }
+}

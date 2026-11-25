@@ -1,0 +1,94 @@
+{
+  "apt_refresh": [
+    {
+      "min_version": "0.10.6-2ubuntu0.6",
+      "package": "libssh-4",
+      "reason": "USN-9187-1: libssh-4 0.10.6-2ubuntu0.5 -> 0.10.6-2ubuntu0.6"
+    }
+  ],
+  "build_method": "source-rebuild-node",
+  "chain_id": 1249,
+  "dep_bumps": [
+    {
+      "module": "fast-uri",
+      "to": "4.1.4",
+      "why": "verdict: fast-uri None -> 4.1.4"
+    },
+    {
+      "module": "undici",
+      "to": "7.30.1",
+      "why": "verdict: undici None -> 7.30.1"
+    }
+  ],
+  "expected_residuals": [],
+  "images": [
+    {
+      "digest": "sha256:9c7f200c07e3d4a03e7249d2c16bf66a51120fb876aa2242cf31451412543289",
+      "ref": "ubuntu:24.04",
+      "role": "base"
+    }
+  ],
+  "mod_replaces": [],
+  "runtime_packages": [
+    "ca-certificates",
+    "tzdata",
+    "curl",
+    "libatomic1",
+    "git",
+    "openssh-client",
+    "pandoc",
+    "tini"
+  ],
+  "schema": "kitforge.toolchain_lock.v1",
+  "slug": "wikijs",
+  "source": {
+    "app_copies": [
+      {
+        "dst": "/wiki/assets",
+        "src": "vendored/wikijs-src/assets"
+      },
+      {
+        "dst": "/wiki/blocks/compiled",
+        "src": "vendored/wikijs-src/blocks/compiled"
+      },
+      {
+        "dst": "/wiki/backend",
+        "src": "vendored/wikijs-src/backend"
+      },
+      {
+        "dst": "/wiki/config.yml",
+        "src": "vendored/wikijs-src/dev/build/config.yml"
+      },
+      {
+        "dst": "/wiki/LICENSE",
+        "src": "vendored/wikijs-src/LICENSE"
+      }
+    ],
+    "build_cmds": [
+      "cd backend && node --input-type=module -e \"for (const m of ['fastify','pg','drizzle-orm/node-postgres','sharp','simple-git','yjs','@node-saml/node-saml','openid-client','nodemailer','ldapts','ssh2-sftp-client','sanitize-html','cheerio','@aws-sdk/client-s3','@azure/storage-blob','@google-cloud/storage']) await import(m); console.log('wikijs backend dependencies load')\"",
+      "cd backend && node -e \"const path=require('path');const v=require(require.resolve('@azure/msal-node/package.json',{paths:[path.dirname(require.resolve('@azure/identity/package.json'))]})).version;const [a,b]=v.split('.').map(Number);if(a<7||(a===7&&b<1))throw new Error('@azure/identity resolves @azure/msal-node '+v+', inside CVE-2026-109461 (fixed in 7.1.0)');new (require('@azure/identity').DefaultAzureCredential)();console.log('@azure/identity resolves @azure/msal-node '+v+', DefaultAzureCredential constructs')\""
+    ],
+    "commit": "c711a5a2d5652961658c9f4f81b90665dfeaf929",
+    "commit_epoch": 1794731615,
+    "install_cmd": "npm install --omit=dev --no-audit --no-fund",
+    "node_dist": {
+      "sha256": "518674de2b621728a5e4486f5fb3b7d2900bb3cc4aa97969edaa463db99f9778",
+      "version": "26.13.1"
+    },
+    "node_project_dir": "backend",
+    "node_version": "26",
+    "package_manager": "npm",
+    "pre_install_cmds": [
+      "node -e \"const fs=require('fs');for(const f of ['backend/package.json','frontend/package.json']){const p=JSON.parse(fs.readFileSync(f,'utf8'));p.version='@VERSION_BARE@';fs.writeFileSync(f,JSON.stringify(p,null,2)+'\\n')}\"",
+      "cd frontend && npm ci --no-audit --no-fund && npm install --no-save --no-audit --no-fund --ignore-scripts @rolldown/binding-wasm32-wasi@$(node -p \"require('./node_modules/rolldown/package.json').version\") && NAPI_RS_FORCE_WASI=true npm run build && test -s ../assets/index.html",
+      "cd blocks && npm ci --no-audit --no-fund && npm run build && test -d compiled",
+      "rm -rf frontend/node_modules blocks/node_modules"
+    ],
+    "ref": "3.4.0",
+    "repo": "https://github.com/requarks/wiki",
+    "source_date_epoch": 1795543338,
+    "source_date_epoch_basis": "release-cut",
+    "source_date_epoch_provenance": "the time release 3.4.0-CE-ubuntu24.04-r2 was cut (2026-11-24T18:02:18Z), by scripts/rerelease-agenda.py: ReadyStack dates an image by when its release was packaged (owner 2026-11-10), recorded here once and used by every rebuild of the release; it builds upstream commit c711a5a2d565, dated 2026-11-15T08:33:35Z (source.commit_epoch)."
+  },
+  "version": "3.4.0"
+}
