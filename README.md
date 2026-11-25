@@ -5,7 +5,35 @@ The offline build kit for the Docker image `readystack/wikijs:3.4.0-CE-ubuntu24.
 - Release: [3.4.0-CE-ubuntu24.04-r2](https://github.com/readystack-dev/wikijs/releases/tag/3.4.0-CE-ubuntu24.04-r2)
 - Image: [`docker.io/readystack/wikijs:3.4.0-CE-ubuntu24.04-r2`](https://hub.docker.com/r/readystack/wikijs/tags), manifest digest `sha256:7f333973f5a76d7707116c401b13200d4ea18fd5168995c3c312dfa068bfd2e3`
 - Product page: https://readystack.dev/products/wikijs
+- Source and build recipe: https://readystack.dev/products/wikijs/recipe
+- Build trail: https://readystack.dev/products/wikijs/trail/3.4.0-CE-ubuntu24.04-r2
 - Defects: this repository's Issues (defects recorded from 25 November 2026 on) and https://readystack.dev/defects.html?product=wikijs
+
+## The image
+
+One container running the Wiki.js 3 server (Node.js 26, `node --no-experimental-webstorage backend` under tini as PID 1, one foreground process plus its worker threads) on port 3000, and a PostgreSQL 17 or later database that you run beside it. Wiki.js 3 supports no other database and embeds none. Everything the wiki stores lives in that database: pages and their history, users and groups, settings, and uploaded files (stored as binary columns), in a schema named wiki (DB_SCHEMA). /wiki/data inside the container is a cache that starts empty in a new container and fills as the wiki is used, plus the working copies of Git storage targets you configure. It is not a multi-instance cluster in this configuration.
+
+## Who uses Wiki.js and why
+
+Teams and organisations that want a self-hosted wiki for their documentation, written in Markdown or a visual editor.
+
+Wiki.js is open-source wiki software with Markdown, visual and HTML editors, version history on every page, search, and sign-in through local accounts or company systems such as LDAP, SAML and OpenID Connect.
+
+A typical use: An engineering team writes its documentation in Markdown, while the support team prefers a visual editor. In Wiki.js both edit the same wiki, every change is tracked so a page can be compared or reverted, and staff sign in with their company accounts.
+
+From the upstream project's own description: https://github.com/requarks/wiki, https://js.wiki/.
+
+## This release
+
+- Docker Scout policy grade at release: **A** (94%), graded 2026-11-25 with `docker scout policy` (CLI 1.26.0, docker-default configuration).
+  - Docker Scout counts 111 packages with copyleft licences (AGPL, GPL, LGPL, MPL), 109 of them operating-system packages (it counts only packages whose licence it can read; the SBOM lists every component). AGPL: wiki-backend.
+- Signed with ReadyStack's release key (fingerprint `04daa92344a52dbc`): https://readystack.dev/keys/cosign.pub.
+- Runs as a non-root user (`wiki`).
+- Attestations on the image: an SPDX SBOM and SLSA provenance v1.
+- Rebuilt from this kit with network egress blocked on 2026-11-25; the rebuilt image digest is the published one.
+- Base: Ubuntu 24.04.
+
+The current grade, measured again every day, is on https://readystack.dev/products/wikijs.
 
 Wiki.js is distributed under its upstream licence (AGPL-3.0); the kit contains upstream's source under that licence, and each vendored component under its own.
 
@@ -39,3 +67,5 @@ The build trail (`ReadyStack-wikijs-3.4.0-CE-ubuntu24.04-r2.trail.json`, signed 
 ## This repository
 
 `recipe/` holds the kit's recipe files (Dockerfiles, build scripts, pins) as published at https://readystack.dev/products/wikijs/recipe. The complete kit is the release download. Each release is a tag here.
+
+— ReadyStack · https://readystack.dev
