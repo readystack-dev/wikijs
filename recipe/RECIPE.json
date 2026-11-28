@@ -1,11 +1,11 @@
 {
  "schema": "readystack.recipe.v1",
  "slug": "wikijs",
- "tag": "3.4.0-CE-ubuntu24.04-r2",
- "tarball": "ReadyStack-wikijs-3.4.0-CE-ubuntu24.04-r2.tar.gz",
- "tarball_sha256": "2fb23c4bb96643580b6224275b99c7d2c3bae42389fd210c245620993ef08fb2",
- "kit_root": "3.4.0-CE-ubuntu24.04-r2",
- "generated_at": "2026-11-25T10:03:18Z",
+ "tag": "3.6.1-CE-ubuntu24.04-r1",
+ "tarball": "ReadyStack-wikijs-3.6.1-CE-ubuntu24.04-r1.tar.gz",
+ "tarball_sha256": "a678f2740394fecd313d08b32a6ca0516e5f5189dd9f63749cc703998d847486",
+ "kit_root": "3.6.1-CE-ubuntu24.04-r1",
+ "generated_at": "2026-11-28T16:37:06Z",
  "generator": "KitForge release/recipe_publish.py",
  "dockerfile": "Dockerfile.offline.pinned",
  "build_script": "BUILD_OFFLINE.sh",
@@ -13,16 +13,16 @@
  "pins": {
   "upstream": {
    "repo": "https://github.com/requarks/wiki",
-   "ref": "3.4.0",
-   "commit": "c711a5a2d5652961658c9f4f81b90665dfeaf929",
-   "url": "https://github.com/requarks/wiki/tree/c711a5a2d5652961658c9f4f81b90665dfeaf929",
+   "ref": "3.6.1",
+   "commit": "ef6e6d5eb8913306f1d2916a99f7810ada94f042",
+   "url": "https://github.com/requarks/wiki/tree/ef6e6d5eb8913306f1d2916a99f7810ada94f042",
    "from": "docs/provenance/BUILD_RECIPE.json"
   },
   "fetches": [
    {
     "kind": "git",
     "url": "https://github.com/requarks/wiki",
-    "ref": "3.4.0"
+    "ref": "3.6.1"
    },
    {
     "kind": "http",
@@ -49,14 +49,14 @@
    "buildkit_image_digest": "sha256:e0e67ea9c4bb07bdef683e29f70f3b623d1eb9c82274a9ec04e6bb0511449fb0"
   },
   "build_method": "source-rebuild-node",
-  "source_date_epoch": 1795543338,
-  "source_date_epoch_utc": "2026-11-24T18:02:18Z",
+  "source_date_epoch": 1795614473,
+  "source_date_epoch_utc": "2026-11-25T13:47:53Z",
   "target": {
-   "image_manifest_digest": "sha256:7f333973f5a76d7707116c401b13200d4ea18fd5168995c3c312dfa068bfd2e3",
-   "config_digest": "sha256:f68c1aab2b92b9a9f3202962b920ae55d493512c1b39e4804d94ef3d4d0ccfd6",
-   "image": "readystack/wikijs:3.4.0-CE-ubuntu24.04-r2"
+   "image_manifest_digest": "sha256:e7170ba1b3adfd033db94a8749377e9b428cc8b3b175fd470572c744ffa54f21",
+   "config_digest": "sha256:16b3db79ce0df7a34807c0cd2ab8cb8eed7319ffbb69977fbc303072ee357c8f",
+   "image": "readystack/wikijs:3.6.1-CE-ubuntu24.04-r1"
   },
-  "checksummed_files": 43571
+  "checksummed_files": 43704
  },
  "files": [
   {
@@ -76,9 +76,9 @@
   },
   {
    "path": "CHECKSUMS.sha256",
-   "size": 6699552,
-   "sha256": "52eb2788781099a7196a522c4405c906be311990df99d7c5dcc6b0602763b2c4",
-   "lines": 43571,
+   "size": 6718391,
+   "sha256": "921d116ef22063ec677e53f75c5fb0a1bde727645472c630dcf59a8234c0d83d",
+   "lines": 43704,
    "public": "account",
    "stored": "gzip"
   },
@@ -91,67 +91,67 @@
   },
   {
    "path": "Dockerfile",
-   "size": 5259,
-   "sha256": "c23d9ca7fe8545f9b01ae41c2d2a8eb66f28f9abac89244660ea5e18c493f898",
-   "lines": 48,
+   "size": 5633,
+   "sha256": "f5e11aa6d06a45778727952c548319abc2ef2141d8b72270d8a75ad1fa760e84",
+   "lines": 53,
    "public": "account"
   },
   {
    "path": "Dockerfile.offline",
-   "size": 5259,
-   "sha256": "c23d9ca7fe8545f9b01ae41c2d2a8eb66f28f9abac89244660ea5e18c493f898",
-   "lines": 48,
+   "size": 5633,
+   "sha256": "f5e11aa6d06a45778727952c548319abc2ef2141d8b72270d8a75ad1fa760e84",
+   "lines": 53,
    "public": "account"
   },
   {
    "path": "Dockerfile.offline.pinned",
-   "size": 5259,
-   "sha256": "c23d9ca7fe8545f9b01ae41c2d2a8eb66f28f9abac89244660ea5e18c493f898",
-   "lines": 48,
+   "size": 5633,
+   "sha256": "f5e11aa6d06a45778727952c548319abc2ef2141d8b72270d8a75ad1fa760e84",
+   "lines": 53,
    "public": "preview",
    "preview_lines": 24
   },
   {
    "path": "Dockerfile.vendor",
    "size": 4719,
-   "sha256": "1909a6726d523abf06a15eb07139678d53ab94865044f88834ce7db7d98ff9ef",
+   "sha256": "22ff9d4f39ca0d2324daa5835de5ea2cf424fb46427a278d54845aefaab6571c",
    "lines": 41,
    "public": "account"
   },
   {
    "path": "FILE_MODES.tsv",
-   "size": 4228488,
-   "sha256": "23e1dbcc7f6abab86ceb371b5af5fe54d01e858b06521480ec7a65e7d3fb32ad",
-   "lines": 47604,
+   "size": 4239990,
+   "sha256": "08f2544dc6c3f2bb1325c70163805ce625f3d406d56572c5143170f9e62a9659",
+   "lines": 47753,
    "public": "account",
    "stored": "gzip"
   },
   {
    "path": "MANIFEST.txt",
-   "size": 3736754,
-   "sha256": "06e0855b43832a8131c77841f625256fac69075cab67594ee15396553040909b",
-   "lines": 43573,
+   "size": 3746549,
+   "sha256": "9f5ad21899c3b0cda5fcce0c58d13ccf946066c4ceb03a1feffb693e207c8d35",
+   "lines": 43706,
    "public": "account",
    "stored": "gzip"
   },
   {
    "path": "README.md",
-   "size": 3275,
-   "sha256": "2ad1671c3994d031850ce2788c857136caeb186c532beaed6926dd484f508a39",
-   "lines": 39,
+   "size": 3455,
+   "sha256": "a2e3f4d8bb0aab06ee2bbd3075871613fbd4fbc1c8c126c8a71e83b9e27cc6a9",
+   "lines": 41,
    "public": "account"
   },
   {
    "path": "SOURCE_DATE_EPOCH.txt",
    "size": 11,
-   "sha256": "086da3cb99e664efc1b18959ae24a02796a7e8e6f4e1f3285d7b089902f9ccac",
+   "sha256": "b32b38457b2447422048bdcbeaaab9693aaf748ed7e74e938135044e84a67865",
    "lines": 1,
    "public": "full"
   },
   {
    "path": "TARGET_DIGEST.txt",
    "size": 437,
-   "sha256": "1f0cf6c39335ea3d57153c5116f87b149d58ae3cfc5468cb4262a662b87475b7",
+   "sha256": "ce93668aa5f1d9a65f6e250bbeceba8876357fc352cf8af45938b5ff57433380",
    "lines": 8,
    "public": "full"
   },
@@ -165,21 +165,21 @@
   {
    "path": "docs/PROVENANCE.md",
    "size": 2607,
-   "sha256": "e3bdbe256d824d1dda590d68b18a8294dd82027ca63a565e2a7347aa8a597a8f",
+   "sha256": "6729e94cc0b0b469caecedf44405edbcfb7fc7f826f21b782b44f5565b1a7330",
    "lines": 36,
    "public": "account"
   },
   {
    "path": "docs/REBUILD.md",
-   "size": 6163,
-   "sha256": "8814e7c78ab2b7f3a6267c6b5ede958f64540813f8c38f03bb1204da4536d42a",
+   "size": 6164,
+   "sha256": "a861d4f075fd149e274efb1a7bff16e58ea3012e20e780ebb11b4b45a98005bf",
    "lines": 62,
    "public": "account"
   },
   {
    "path": "docs/VERIFY.md",
    "size": 2016,
-   "sha256": "b654ea2b75361b8e6e7e014ed759b49293c7d0eb804d79532a61674cf9f58960",
+   "sha256": "9a2153b597dc2359fdef48d55b4aaaa97882d57f224977e77dbc73cd64ad4f0c",
    "lines": 34,
    "public": "account"
   },
@@ -192,29 +192,29 @@
   },
   {
    "path": "docs/provenance/BUILD_RECIPE.json",
-   "size": 5167,
-   "sha256": "fc5a5bb0dda59fc48bf0c59af4cdee1ceb43e39ae8ced5529f9c6f659c185abd",
+   "size": 5159,
+   "sha256": "953ee238ac14c4797d163a7dfca06336837ee9ea1ecf06388dcd7f1c54e1114a",
    "lines": 68,
    "public": "account"
   },
   {
    "path": "docs/provenance/CUSTODY_INPUTS.json",
    "size": 643,
-   "sha256": "3d528bf1f7bdc6aef0363475e864e871cb549122953d9021f4f66689c402f8a2",
+   "sha256": "3f27e6f0062a47e9c8eb2615e121ee642fe30db09ca85e5da09490aa4d80bdc2",
    "lines": 17,
    "public": "account"
   },
   {
    "path": "docs/provenance/SOURCE_FILE_MANIFEST.json",
-   "size": 76286,
-   "sha256": "a80f47d8e09b9464b4913fd17321cb271986fb3b01d3df92418b6f518e9e13a4",
-   "lines": 1517,
+   "size": 78393,
+   "sha256": "5ad3bffea44a7a4146df6a5f824b49c4d8ae09fc6e2545a07a164a8466f08cd8",
+   "lines": 1556,
    "public": "account"
   },
   {
    "path": "docs/provenance/SOURCE_TREE_HASH.json",
    "size": 301,
-   "sha256": "ca2d9710da1d3131ba1195563a4f8044d5da342fe5a63a4e22ee929506d2210c",
+   "sha256": "abbd69171a3ab6fcc7bdd9bd23ef18405afcb1ef6729e092ba002f84406b5fde",
    "lines": 9,
    "public": "full"
   },
@@ -227,8 +227,8 @@
   },
   {
    "path": "docs/provenance/TOOLCHAIN.lock",
-   "size": 4037,
-   "sha256": "ee868c29a7d1e17559771b2da12d9269d139562e86f2e3fcc2ba2f25d1f67908",
+   "size": 4029,
+   "sha256": "6bbcc06b7c5ce5aca9d6932e2c2de25c18a08f787f2f048b064c95048443547b",
    "lines": 94,
    "public": "account"
   },
@@ -242,7 +242,7 @@
   {
    "path": "rebuild.json",
    "size": 1211,
-   "sha256": "35b1fa089636d831f0b56ce2e48a2e1def54492f9cb0c15af097012a8d89d84d",
+   "sha256": "96ff0359c08744120eb7ec4cdcfb24cca7061c0d8974f5e639e2e75d7cb8a363",
    "lines": 31,
    "public": "account"
   },
@@ -261,16 +261,16 @@
    "bytes": 29796854
   },
   "docs": {
-   "files": 1570,
-   "bytes": 29512298
+   "files": 1609,
+   "bytes": 31733626
   },
   "toolchain": {
    "files": 1,
    "bytes": 111529472
   },
   "vendored": {
-   "files": 41970,
-   "bytes": 396930206
+   "files": 42064,
+   "bytes": 399543460
   }
  },
  "redacted_files": 0

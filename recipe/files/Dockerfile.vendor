@@ -17,8 +17,8 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
 COPY --from=nodedist /opt/node/ /usr/local/
 RUN node --version && npm --version
 WORKDIR /app
-RUN git clone --depth 1 --branch 3.4.0 -q https://github.com/requarks/wiki . && test "$(git rev-parse HEAD)" = c711a5a2d5652961658c9f4f81b90665dfeaf929
-RUN node -e "const fs=require('fs');for(const f of ['backend/package.json','frontend/package.json']){const p=JSON.parse(fs.readFileSync(f,'utf8'));p.version='3.4.0';fs.writeFileSync(f,JSON.stringify(p,null,2)+'\n')}"
+RUN git clone --depth 1 --branch 3.6.1 -q https://github.com/requarks/wiki . && test "$(git rev-parse HEAD)" = ef6e6d5eb8913306f1d2916a99f7810ada94f042
+RUN node -e "const fs=require('fs');for(const f of ['backend/package.json','frontend/package.json']){const p=JSON.parse(fs.readFileSync(f,'utf8'));p.version='3.6.1';fs.writeFileSync(f,JSON.stringify(p,null,2)+'\n')}"
 RUN cd frontend && npm ci --no-audit --no-fund && npm install --no-save --no-audit --no-fund --ignore-scripts @rolldown/binding-wasm32-wasi@$(node -p "require('./node_modules/rolldown/package.json').version") && NAPI_RS_FORCE_WASI=true npm run build && test -s ../assets/index.html
 RUN cd blocks && npm ci --no-audit --no-fund && npm run build && test -d compiled
 RUN rm -rf frontend/node_modules blocks/node_modules

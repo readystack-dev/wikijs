@@ -2,8 +2,8 @@
   "schema": "kitforge.custody_inputs.v1",
   "slug": "wikijs",
   "repo": "https://github.com/requarks/wiki",
-  "ref": "3.4.0",
-  "commit": "c711a5a2d5652961658c9f4f81b90665dfeaf929",
+  "ref": "3.6.1",
+  "commit": "ef6e6d5eb8913306f1d2916a99f7810ada94f042",
   "edition": "CE",
   "ce_audit": {
     "ce_only": true,

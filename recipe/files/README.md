@@ -1,14 +1,16 @@
-# Build kit for `readystack/wikijs:3.4.0-CE-ubuntu24.04-r2`
+# Build kit for `readystack/wikijs:3.6.1-CE-ubuntu24.04-r1`
 
-This archive rebuilds the linux/amd64 image `readystack/wikijs:3.4.0-CE-ubuntu24.04-r2` from its own contents, with the network off, and checks the result against the image digest ReadyStack published, `sha256:7f333973f5a76d7707116c401b13200d4ea18fd5168995c3c312dfa068bfd2e3` (also in `TARGET_DIGEST.txt`). It holds everything the build needs, not the image itself.
+This archive rebuilds the linux/amd64 image `readystack/wikijs:3.6.1-CE-ubuntu24.04-r1` from its own contents, with the network off, and checks the result against the image digest ReadyStack published, `sha256:e7170ba1b3adfd033db94a8749377e9b428cc8b3b175fd470572c744ffa54f21` (also in `TARGET_DIGEST.txt`). It holds everything the build needs, not the image itself.
+
+Every release of this kit, its recipe and its defect issues are published at https://github.com/readystack-dev/wikijs; the product page is https://readystack.dev/products/wikijs.
 
 ## Rebuild it
 
 You need linux/amd64 Docker with `buildx` 0.30 or later, `jq` and `tar` (docs/REBUILD.md lists the rest, if any, and the hardware ReadyStack used).
 
 ```
-tar -xpzf ReadyStack-wikijs-3.4.0-CE-ubuntu24.04-r2.tar.gz    # -p keeps each file's mode
-cd 3.4.0-CE-ubuntu24.04-r2
+tar -xpzf ReadyStack-wikijs-3.6.1-CE-ubuntu24.04-r1.tar.gz    # -p keeps each file's mode
+cd 3.6.1-CE-ubuntu24.04-r1
 ./BUILD_OFFLINE.sh            # builds with the network off, from this archive alone
 ./VERIFY_OFFLINE.sh           # compares the rebuilt digest with the published one, then checks the image
 ```
@@ -23,8 +25,8 @@ ReadyStack signs this archive's `rebuild.json` with its release key once the fin
 
 ```
 curl -fsSLo ../cosign.pub https://readystack.dev/keys/cosign.pub
-curl -fsSLo ../ReadyStack-wikijs-3.4.0-CE-ubuntu24.04-r2.rebuild.json.sigstore https://readystack.dev/api/kit/wikijs/3.4.0-CE-ubuntu24.04-r2/files/ReadyStack-wikijs-3.4.0-CE-ubuntu24.04-r2.rebuild.json.sigstore
-python3 docs/rebuild-bundle/rebuild_bundle.py validate . --key ../cosign.pub --signature ../ReadyStack-wikijs-3.4.0-CE-ubuntu24.04-r2.rebuild.json.sigstore
+curl -fsSLo ../ReadyStack-wikijs-3.6.1-CE-ubuntu24.04-r1.rebuild.json.sigstore https://readystack.dev/api/kit/wikijs/3.6.1-CE-ubuntu24.04-r1/files/ReadyStack-wikijs-3.6.1-CE-ubuntu24.04-r1.rebuild.json.sigstore
+python3 docs/rebuild-bundle/rebuild_bundle.py validate . --key ../cosign.pub --signature ../ReadyStack-wikijs-3.6.1-CE-ubuntu24.04-r1.rebuild.json.sigstore
 ```
 
 `validate` needs Python 3 and cosign. Without building anything it checks the signature over `rebuild.json`, every file's checksum, the tree hash over every file's path, mode and content, each base image layout's digest and the builder archive. `verify`, with the same arguments, also rebuilds with the builder's network egress blocked and exits 0 only when the rebuilt digest is the published one (docs/REBUILD.md).

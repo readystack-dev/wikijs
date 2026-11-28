@@ -6,13 +6,13 @@
 
 # Wiki.js: ReadyStack build kit
 
-The offline build kit for the Docker image `readystack/wikijs:3.4.0-CE-ubuntu24.04-r2`. It holds what the image is built from (upstream source, base images, toolchain, pinned dependencies) and the documents, so the image can be rebuilt with no network access (`docker build --network=none`).
+The offline build kit for the Docker image `readystack/wikijs:3.6.1-CE-ubuntu24.04-r1`. It holds what the image is built from (upstream source, base images, toolchain, pinned dependencies) and the documents, so the image can be rebuilt with no network access (`docker build --network=none`).
 
-- Release: [3.4.0-CE-ubuntu24.04-r2](https://github.com/readystack-dev/wikijs/releases/tag/3.4.0-CE-ubuntu24.04-r2)
-- Image: [`docker.io/readystack/wikijs:3.4.0-CE-ubuntu24.04-r2`](https://hub.docker.com/r/readystack/wikijs/tags), manifest digest `sha256:7f333973f5a76d7707116c401b13200d4ea18fd5168995c3c312dfa068bfd2e3`
+- Release: [3.6.1-CE-ubuntu24.04-r1](https://github.com/readystack-dev/wikijs/releases/tag/3.6.1-CE-ubuntu24.04-r1)
+- Image: [`docker.io/readystack/wikijs:3.6.1-CE-ubuntu24.04-r1`](https://hub.docker.com/r/readystack/wikijs/tags), manifest digest `sha256:e7170ba1b3adfd033db94a8749377e9b428cc8b3b175fd470572c744ffa54f21`
 - Product page: https://readystack.dev/products/wikijs
 - Source and build recipe: https://readystack.dev/products/wikijs/recipe
-- Build trail: https://readystack.dev/products/wikijs/trail/3.4.0-CE-ubuntu24.04-r2
+- Build trail: https://readystack.dev/products/wikijs/trail/3.6.1-CE-ubuntu24.04-r1
 - Defects: this repository's Issues (defects recorded from 25 November 2026 on) and https://readystack.dev/defects.html?product=wikijs
 
 ## The image
@@ -31,12 +31,12 @@ From the upstream project's own description: https://github.com/requarks/wiki, h
 
 ## This release
 
-- Docker Scout policy grade at release: **A** (94%), graded 2026-11-25 with `docker scout policy` (CLI 1.26.0, docker-default configuration).
+- Docker Scout policy grade at release: **A** (94%), graded 2026-11-28 with `docker scout policy` (CLI 1.26.0, docker-default configuration).
   - Docker Scout counts 111 packages with copyleft licences (AGPL, GPL, LGPL, MPL), 109 of them operating-system packages (it counts only packages whose licence it can read; the SBOM lists every component). AGPL: wiki-backend.
 - Signed with ReadyStack's release key (fingerprint `04daa92344a52dbc`): https://readystack.dev/keys/cosign.pub.
 - Runs as a non-root user (`wiki`).
 - Attestations on the image: an SPDX SBOM and SLSA provenance v1.
-- Rebuilt from this kit with network egress blocked on 2026-11-25; the rebuilt image digest is the published one.
+- Rebuilt from this kit with network egress blocked on 2026-11-28; the rebuilt image digest is the published one.
 - Base: Ubuntu 24.04.
 
 The current grade, measured again every day, is on https://readystack.dev/products/wikijs.
@@ -45,7 +45,7 @@ Wiki.js is distributed under its upstream licence (AGPL-3.0); the kit contains u
 
 ## Download
 
-From the [3.4.0-CE-ubuntu24.04-r2 release](https://github.com/readystack-dev/wikijs/releases/tag/3.4.0-CE-ubuntu24.04-r2): `ReadyStack-wikijs-3.4.0-CE-ubuntu24.04-r2.tar.gz` (311.8 MB), SHA-256 `2fb23c4bb96643580b6224275b99c7d2c3bae42389fd210c245620993ef08fb2`.
+From the [3.6.1-CE-ubuntu24.04-r1 release](https://github.com/readystack-dev/wikijs/releases/tag/3.6.1-CE-ubuntu24.04-r1): `ReadyStack-wikijs-3.6.1-CE-ubuntu24.04-r1.tar.gz` (312.4 MB), SHA-256 `a678f2740394fecd313d08b32a6ca0516e5f5189dd9f63749cc703998d847486`.
 
 ```sh
 sha256sum --check --ignore-missing SHA256SUMS
@@ -57,18 +57,18 @@ The rebuild statement is signed with the ReadyStack release key. Check the signa
 
 ```sh
 cosign verify-blob --key https://readystack.dev/keys/cosign.pub \
-  --bundle ReadyStack-wikijs-3.4.0-CE-ubuntu24.04-r2.rebuild.json.sigstore ReadyStack-wikijs-3.4.0-CE-ubuntu24.04-r2.rebuild.json
+  --bundle ReadyStack-wikijs-3.6.1-CE-ubuntu24.04-r1.rebuild.json.sigstore ReadyStack-wikijs-3.6.1-CE-ubuntu24.04-r1.rebuild.json
 ```
 
 Unpack with `-p` so file modes are kept, then follow the kit's own README.md and docs/REBUILD.md:
 
 ```sh
-tar -xpzf ReadyStack-wikijs-3.4.0-CE-ubuntu24.04-r2.tar.gz
-cd 3.4.0-CE-ubuntu24.04-r2
+tar -xpzf ReadyStack-wikijs-3.6.1-CE-ubuntu24.04-r1.tar.gz
+cd 3.6.1-CE-ubuntu24.04-r1
 less README.md docs/REBUILD.md
 ```
 
-The build trail (`ReadyStack-wikijs-3.4.0-CE-ubuntu24.04-r2.trail.json`, signed the same way, and its Markdown copy) records how this release was built and checked.
+The build trail (`ReadyStack-wikijs-3.6.1-CE-ubuntu24.04-r1.trail.json`, signed the same way, and its Markdown copy) records how this release was built and checked.
 
 ## This repository
 
